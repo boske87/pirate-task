@@ -45,7 +45,7 @@ class JobProjectController extends Controller
         $job = new JobProject();
         $job->title = $request->get('title');
         $job->email = $request->get('email');
-        $job->description = str_slug($request->get('description'));
+        $job->description = $request->get('description');
         $job->user_id = $request->user()->id;
         $job->email_token = base64_encode($job->email);
         if(!Auth::user()->checkIfFirstPosting($job->email)) {
